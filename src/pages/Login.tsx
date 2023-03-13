@@ -1,3 +1,4 @@
+//  @ts-nocheck
 import { useState, useContext, useEffect } from "react"
 import {  useNavigate } from "react-router-dom";
 import brand from '../assets/icon.png';

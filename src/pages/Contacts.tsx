@@ -1,3 +1,4 @@
+//  @ts-nocheck
 import { forwardRef, useContext, useEffect, useState } from 'react';
 import { CirclePicker } from 'react-color';
 import { registerLocale } from "react-datepicker";

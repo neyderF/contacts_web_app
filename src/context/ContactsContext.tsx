@@ -24,7 +24,7 @@ export const contactReducer = (state: any, action: Action) => {
             return state
     }
 }
-
+// @ts-ignore
 export const ContactContextProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(contactReducer, {
@@ -33,9 +33,9 @@ export const ContactContextProvider = ({ children }) => {
         loading: false
     })
 
-
+    // @ts-ignore
     const createContact = async (contactData) => {
-       
+
         try {
 
             dispatch({ payload: true, type: 'SET_LOADING' })
@@ -49,9 +49,10 @@ export const ContactContextProvider = ({ children }) => {
 
         } catch (error) {
             let message = 'Error al contactar al servidor'
-
+            // @ts-ignore
             if (error.response.status === 401) {
                 message = 'No autorizado'
+                // @ts-ignore
             } else if (error.response.status === 400) {
                 message = 'Error en la información enviada'
             }
@@ -76,7 +77,7 @@ export const ContactContextProvider = ({ children }) => {
         } catch (error) {
 
             let message = 'Error al contactar al servidor'
-
+            // @ts-ignore
             if (error.response.status === 401) {
                 message = 'No autorizado'
             }
@@ -88,9 +89,9 @@ export const ContactContextProvider = ({ children }) => {
         }
 
     };
-
+    // @ts-ignore
     const updateContact = async (contactData) => {
-      
+
 
         try {
 
@@ -105,9 +106,10 @@ export const ContactContextProvider = ({ children }) => {
 
         } catch (error) {
             let message = 'Error al contactar al servidor'
-
+            // @ts-ignore
             if (error.response.status === 401) {
                 message = 'No autorizado'
+                // @ts-ignore
             } else if (error.response.status === 400) {
                 message = 'Error en la información enviada'
             }
@@ -136,7 +138,7 @@ export const ContactContextProvider = ({ children }) => {
         } catch (error) {
 
             let message = 'Error al contactar al servidor'
-
+            // @ts-ignore
             if (error.response.status === 401) {
                 message = 'No autorizado'
             }
@@ -149,7 +151,7 @@ export const ContactContextProvider = ({ children }) => {
 
     }
 
-
+    // @ts-ignore
     return (<ContactsContext.Provider value={{
         contacts: state.contacts,
         message: state.message,

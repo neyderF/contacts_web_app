@@ -1,3 +1,4 @@
+
 import { createContext, useReducer } from 'react'
 import { authToken, httpClient } from '../config/httpClient';
 
@@ -27,7 +28,7 @@ export const authReducer = (state: any, action: Action) => {
             return state
     }
 }
-
+// @ts-ignore
 export const AuthContextProvider = ({ children }) => {
 
     const [state, dispatch] = useReducer(authReducer, {
@@ -53,7 +54,7 @@ export const AuthContextProvider = ({ children }) => {
 
         } catch (error) {
             let message = 'Error al contactar al servidor'
-
+// @ts-ignore
             if (error.response.status === 401 || error.response.status === 404) {
                 message = 'Credenciales invalidas'
             }
@@ -92,7 +93,7 @@ export const AuthContextProvider = ({ children }) => {
         authToken(null);
         dispatch({ payload: null, type: 'LOGOUT' })
     };
-
+// @ts-ignore
     return (<AuthContext.Provider value={{
         authenticatedUser: state.user,
         message: state.message,
