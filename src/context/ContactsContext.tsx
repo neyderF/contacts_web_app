@@ -43,7 +43,7 @@ export const ContactContextProvider = ({ children }) => {
 
             await httpClient.post('/contacts', contactData)
 
-            dispatch({ payload: { value: 'created', type: 'success' }, type: 'SHOW_MESSAGE' })
+            dispatch({ payload: { value: 'Contacto creado satisfactoriamente', type: 'success' }, type: 'SHOW_MESSAGE' })
             getContacts()
 
 
@@ -90,7 +90,7 @@ export const ContactContextProvider = ({ children }) => {
     };
 
     const updateContact = async (contactData) => {
-        console.log(contactData)
+      
 
         try {
 
@@ -99,7 +99,7 @@ export const ContactContextProvider = ({ children }) => {
 
             await httpClient.put(`/contacts/${contactData.id}`, contactData)
 
-            dispatch({ payload: { value: 'created', type: 'success' }, type: 'SHOW_MESSAGE' })
+            dispatch({ payload: { value: 'Contacto actualizado satisfactoriamente', type: 'success' }, type: 'SHOW_MESSAGE' })
             getContacts()
 
 
@@ -123,13 +123,13 @@ export const ContactContextProvider = ({ children }) => {
     const deleteContact = async (id: number) => {
 
         let token = localStorage.getItem("token");
-
+        dispatch({ payload: null, type: 'SHOW_MESSAGE' })
         try {
 
             dispatch({ payload: true, type: 'SET_LOADING' })
 
             await httpClient.delete(`/contacts/${id}`);
-
+            dispatch({ payload: { value: 'Contacto eliminado satisfactoriamente', type: 'error' }, type: 'SHOW_MESSAGE' })
             getContacts()
 
 
@@ -141,7 +141,7 @@ export const ContactContextProvider = ({ children }) => {
                 message = 'No autorizado'
             }
 
-            dispatch({ payload: { value: message, type: 'error' }, type: 'SHOW_MESSAGE' })
+            dispatch({ payload: { value: message, type: 'success' }, type: 'SHOW_MESSAGE' })
 
         } finally {
             dispatch({ payload: false, type: 'SET_LOADING' })

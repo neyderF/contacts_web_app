@@ -12,6 +12,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import es from 'date-fns/locale/es';
 import { ContactsContext } from '../context/ContactsContext';
 import { AuthContext } from '../context/AuthContext';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 registerLocale('es', es)
 
 export interface IContact {
@@ -39,6 +43,9 @@ export function Contacts() {
         phone1: '',
         phone2: '',
     })
+
+
+
     const { getContacts, contacts, deleteContact, createContact, updateContact, message } = useContext(ContactsContext)
 
     const { authenticatedUser } = useContext(AuthContext)
@@ -53,7 +60,13 @@ export function Contacts() {
         let mounted = true;
 
         if (message && message.type === 'success') {
+
+
             cleanFields()
+
+            toast.success(message.value);
+        } else if (message && message.type === 'error') {
+            toast.error(message.value);
         }
 
 
@@ -74,9 +87,8 @@ export function Contacts() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         e.stopPropagation();
-        console.log(values)
 
-        type IData = {[key: string] : any}
+        type IData = { [key: string]: any }
 
         let data: IData = {
             firstName: values.firstName,
@@ -139,6 +151,7 @@ export function Contacts() {
         })
     }
 
+
     return (
         <div className='container my-3'>
 
@@ -178,11 +191,11 @@ export function Contacts() {
                                 </div>
                                 <div className="form-group mb-3">
                                     <label className="form-label" >Telefono 1 <span className="text-danger">*</span></label>
-                                    <input type="text" name='phone1' className="form-control" placeholder='4002837663' value={values.phone1} required onChange={handleInput} />
+                                    <input type="number" name='phone1' className="form-control" placeholder='4002837663' value={values.phone1} required onChange={handleInput} />
                                 </div>
                                 <div className="form-group mb-3">
                                     <label className="form-label" >Telefono 2 </label>
-                                    <input type="text" name='phone2' className="form-control" placeholder='3004473636' value={values.phone2} onChange={handleInput} />
+                                    <input type="number" name='phone2' className="form-control" placeholder='3004473636' value={values.phone2} onChange={handleInput} />
                                 </div>
                             </div>
 
@@ -224,7 +237,8 @@ export function Contacts() {
                     </div>
                 </div>
             </div>
-
+            <ToastContainer position="top-center" theme="colored" />
+          
         </div>);
 }
 
