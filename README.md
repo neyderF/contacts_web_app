@@ -7,6 +7,7 @@ Client for contact app elaborated with vite and typescript
 Run the following command
 
 ```
+$ npm i
 $ npm run dev
 ```
 
