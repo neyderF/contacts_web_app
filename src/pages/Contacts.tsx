@@ -184,7 +184,7 @@ export function Contacts() {
                                     <input type="text" className="form-control" name="address" placeholder='CRA 4 #5-58' value={values.address} onChange={handleInput} required />
                                 </div>
                                 <div className="form-group mb-3">
-                                    <label className="form-label" >Seleccione su color favorito <span className="text-danger">*</span></label>
+                                    <label className="form-label" >Seleccione su color favorito</label>
                                     <div className='d-flex p-4 justify-content-center'>
                                         <CirclePicker dateFormat="dd/MM/yyyy" color={values.favoriteColor} onChangeComplete={(color: any) => handleColor(color.hex)} />
                                     </div>
