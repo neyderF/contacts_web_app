@@ -13,7 +13,8 @@ $ npm run dev
 
 ## For deploy
 
-Run the following command
+Set a base url for a api in `config/httpclient`,
+run the following command
 ```
 $ npm run build
 ```
